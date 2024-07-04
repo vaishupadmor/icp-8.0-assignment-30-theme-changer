@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>theme changer</title>
+    <style>
+
+
+    
+        .app-title{
+            text-align: center;
+        }
+
+        .bulb-image{
+           display: block;
+           margin: 10px auto;
+           height: 400px;
+
+        }
+
+        .btn-container{
+            display: flex;
+            justify-content:center;
+            
+        }
+
+        .bulb-toggle{
+            
+            margin:10px 30px;
+            width:100px;
+            cursor: pointer;
+            border-radius: 20px;
+            border: none;
+            padding:10px 20px;
+
+        }
+    
+ .theme-selector-container{
+    position: fixed;
+    right: 50px;
+    
+}
+ .img1{
+    height:30px;
+    cursor: pointer;
+
+
+ }
+
+ .bg-dark{
+    background-color:rgb(0, 0, 0) ;
+    color:white;
+ }
+
+ .bg-light{
+    background-color:  #ccf2ff;
+    color:black;
+ }
+
+ .btn-dark{
+    background-color: #ffccdd;
+    color:#e6004c;
+ }
+
+ .btn-light{
+    background-color: #ffcc80;
+    color:  #804d00;
+ }
+    </style>
+</head>
+<body  class="bg-light" id="main-body">
+    
+    <h1 class="app-title"> Bulb Toggler</h1>
+    
+    <div class="theme-selector-container">
+      <img src="darkmoon.png" class="img1" onclick="darklighton()"/>
+      <img src="brightmoon.png" class="img1" onclick="darklightoff()"/> 
+    </div>
+
+<img src="sunblank.png"  class="bulb-image" id="img-bulb"/>
+
+<div class="btn-container">
+    <button type="button" class=" bulb-toggle btn-light" onclick="sun('light')" id="btn-toggle">Toggle </button>
+</div> 
+
+ <script>
+
+function sun(action){
+        const sunElement = document.getElementById("img-bulb") 
+     if (sunElement.src.includes("sunblank.png"))
+     {
+         sunElement.src = "sunlight.png"
+    }  
+     
+     else if (sunElement.src.includes("sunlight.png"))
+     {
+          sunElement.src = "sundrklight.png"
+     }
+
+     else if (sunElement.src.includes("sundrklight.png"))
+     {
+       sunElement.src = "moon.png"
+     }
+
+     else {
+        sunElement.src = "sunblank.png"
+     }
+    }
+
+    function darklighton(){
+          const mainBody =  document.getElementById("main-body")
+          mainBody.classlist.remove("bg-light")
+          mainBody.classlist.add("bg-dark")
+        
+
+          const togglebutton  = document.getElementById("btn-toggle")
+          togglebutton.classList.remove("btn-light")
+           togglebutton.classList.add("btn-dark")
+        }
+
+    function darklightoff(){
+          const mainBody =  document.getElementById("main-body")
+          mainBody.classlist.remove("bg-dark")
+          mainBody.classlist.add("bg-light")
+        
+          const togglebutton  = document.getElementById("btn-toggle")
+          togglebutton.classList.remove("btn-dark")
+           togglebutton.classList.add("btn-light")
+        }
+
+       
+    </script>
+</body>
+</html>
